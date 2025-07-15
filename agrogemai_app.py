@@ -6,12 +6,6 @@ import json
 import streamlit as st
 from firebase_admin import credentials, initialize_app
 
-
-# --- Firebase Setup ---
-import json
-import streamlit as st
-from firebase_admin import credentials, initialize_app, firestore
-
 if not firebase_admin._apps:
     firebase_creds = json.loads(st.secrets["FIREBASE_CREDENTIALS"])
     cred = credentials.Certificate(firebase_creds)
