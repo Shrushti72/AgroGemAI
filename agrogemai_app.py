@@ -2,11 +2,21 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials, firestore
 import google.generativeai as genai
+import json
+import streamlit as st
+from firebase_admin import credentials, initialize_app
+
 
 # --- Firebase Setup ---
+import json
+import streamlit as st
+from firebase_admin import credentials, initialize_app, firestore
+
 if not firebase_admin._apps:
-    cred = credentials.Certificate("C:/Users/YUVA/OneDrive/Desktop/firebase/agrogemai-firebase-adminsdk-fbsvc-467cc9065f.json")
-    firebase_admin.initialize_app(cred)
+    firebase_creds = json.loads(st.secrets["FIREBASE_CREDENTIALS"])
+    cred = credentials.Certificate(firebase_creds)
+    initialize_app(cred)
+
 db = firestore.client()
 
 # --- Gemini API Setup ---
